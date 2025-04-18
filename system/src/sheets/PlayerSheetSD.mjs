@@ -85,10 +85,6 @@ export default class PlayerSheetSD extends ActorSheetSD {
 			event => this._onlevelUp(event)
 		);
 
-		html.find("[data-action='open-spellbook']").click(
-			event => this._onOpenSpellBook(event)
-		);
-
 		html.find("[data-action='open-gem-bag']").click(
 			event => this._onOpenGemBag(event)
 		);
@@ -188,9 +184,9 @@ export default class PlayerSheetSD extends ActorSheetSD {
 
 		context.system.attributes.ac.value = await this.actor.getArmorClass();
 
-		context.isSpellCaster = await this.actor.isSpellCaster();
-		context.canUseMagicItems = await this.actor.canUseMagicItems();
-		context.showSpellsTab = context.isSpellCaster || context.canUseMagicItems;
+		context.isSpellCaster = true;
+		context.canUseMagicItems = true;
+		context.showSpellsTab = true;
 
 		context.maxHp = this.actor.system.attributes.hp.base
 			+ this.actor.system.attributes.hp.bonus;
